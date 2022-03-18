@@ -2,17 +2,22 @@ import * as React from 'react';
 import * as Data from '../../asset/test.json'
 
 export function Gallery(){
-  let rendering : Array<Object> = Data.renderings;
-  // console.log(rendering)
-
-
+  type Data = {
+    _id : string
+  }
+  const rendering : Array<Data> = Data.renderings;
+  const dataDiv :  Array<JSX.Element> = [];
+  rendering.map(  
+    (data) => {
+      dataDiv.push(
+        <div className='test'>
+          <img src={data["_id"]} />
+        </div>
+      )
+  })
   return(
     <div>
-        { rendering.map( 
-            (data, index) => {
-              console.log(data,index)
-        } )}
-        123
+      {dataDiv}
     </div>
   )
 };
